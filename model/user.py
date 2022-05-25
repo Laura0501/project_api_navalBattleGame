@@ -1,4 +1,5 @@
-from type_user import TypeUser
+from model.type_user import TypeUser
+from .user_dto import UserDTO
 
 class User:
     def __init__(self, data, id:int, type_user:TypeUser):
@@ -11,3 +12,6 @@ class User:
         else:
             raise Exception("Los atributos estan incompletos para crear el usuario")
 
+
+    def to_user_dto(self):
+        return UserDTO(self.email,self.type_user.description)

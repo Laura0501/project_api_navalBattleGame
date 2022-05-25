@@ -3,3 +3,12 @@ class Coordinate:
         self.x = x
         self.y = y
         self.state = state
+
+
+
+
+
+
+
+
+
