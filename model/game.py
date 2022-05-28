@@ -14,7 +14,7 @@ class Game:
         self.hits_player_2=0
         self.board_player1=None
         self.board_player2=None
-        self.__create_boards()
+        self.__create_boards(ship_list)
 
 
     def __create_boards(self, ship_list:ListDe):

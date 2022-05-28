@@ -1,11 +1,20 @@
 from model.list_de import ListDe
 from model.ship import Ship
 from model.ship_distribution import ShipDistribution
+from model.user import User
+from model.type_user import TypeUser
+from model.game import Game
+from model.board import Board
 
 class ListDeService:
 
     def __init__(self):
         self.list_de = ListDe()
+        self.player1=User({"email":"lauralayon@umanizales.edu.co", "password":"1224422"},2,
+                                  TypeUser("1","Jugador"))
+        self.player2=User({"email":"camilo@umanizales.edu.co", "password":"1222"},2,
+                                  TypeUser("1","Jugador"))
+        self.game=None
 
     def get_all_ships_distribution(self):
         if self.list_de.head==None:
@@ -24,3 +33,21 @@ class ListDeService:
 
     def clone_list(self):
         return self.list_de.clone_list().get_all_ships()
+
+    def create_game(self):
+        self.game=Game(2,self.player1,self.player2, self.list_de)
+        return self.game
+
+    def define_location(self):
+        board=Board(1,10,10,User({"email":"lauralayon@umanizales.edu.co", "password":"1224422"},2,
+                                  TypeUser("1","Jugador")),self.list_de)
+
+        return board
+
+
+
+
+
+
+
+

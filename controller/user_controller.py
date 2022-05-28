@@ -42,9 +42,15 @@ def login():
 
 
 @app_user.route("/user/list")
-@jwt_required()
 def get_users():
     return Response(status=200, response=json.dumps(user_service.get_users(),
                     cls=UtilEncoder), mimetype='aplication/json')
+
+@app_user.route("/user/create",  methods=['POST'])
+def create_user():
+    data = request.json
+    user_service.create_user(data)
+    return Response(status=200, response=json.dumps({"message": "Adicionado exitosamente"}),
+                    mimetype='aplication/json')
 
 

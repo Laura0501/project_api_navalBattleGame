@@ -13,6 +13,12 @@ class Board:
         self.board_state = False
         self.received_shots = []
 
+    def define_location(self, coordinates:[]):
+        self.ship_list.validate_coordinate_list_de(coordinates)
+        return {"Message": "El barco ha sido ubicado"}
+
+
+
     def validate_shot_table(self, x:int, y:int):
         if x < self.rows and y < self.cols:
             for shots_received in self.received_shots:
@@ -24,7 +30,7 @@ class Board:
                     while temp != None:
                         try:
                             if coordinate in temp.data.places:
-                                ShipDistribution.validate_shoot(x, y)
+                                ShipDistribution(temp).validate_shoot(x, y)
                             temp = temp.next
                         except:
                             raise Exception({"Message": "Toco agua"})

@@ -1,6 +1,7 @@
 from model.node_de import NodeDe
 from .ship_distribution import ShipDistribution
 
+
 class ListDe:
     def __init__(self):
         self.head=None
@@ -51,7 +52,7 @@ class ListDe:
         while temp != None:
             try:
                 for coordinate in range(len(coordinates)):
-                    if ShipDistribution.validate_coordinate(coordinate):
+                    if ShipDistribution(temp).define_location(coordinate['x'],coordinate['y'], coordinate['orientation']):
                         coordinates.state= True
                 temp = temp.next
 
